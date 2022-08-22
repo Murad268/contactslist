@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import styles from './header.module.scss'
 import add from '../../assets/icons/icons8-add-64.png';
 const Header = () => {
@@ -10,7 +11,7 @@ const Header = () => {
 			</form>
 
 			
-			<div className={styles.header__add}><img src={add} alt="" /></div>
+			<Link to='/contacts/new' className={styles.header__add}><img src={add} alt="" /></Link>
       </div>
    );
 };
