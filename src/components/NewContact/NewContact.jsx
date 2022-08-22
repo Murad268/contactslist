@@ -1,8 +1,10 @@
 import React, {useState} from 'react';
+import {useNavigate } from 'react-router-dom';
 import styles from './newContact.module.scss';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
 const NewContact = () => {
+   const navigate = useNavigate();
    const {addNewContact} = useContacts();
    const [values, setValues] = useState({
       name: "",
@@ -56,7 +58,8 @@ const NewContact = () => {
       setValues(prev => ({...prev, [e.target.name] : e.target.value}))
    }
    const onSubmit = (e) => {
-      addNewContact({...values, id:uniqid()})
+      addNewContact({...values, id:uniqid()});
+      navigate("../")
    }
    return (
       <div className={styles.newContacts}>
