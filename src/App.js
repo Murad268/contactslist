@@ -1,24 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
-
+import {BrowserRouter as Router, Route, Routes, Navigate} from 'react-router-dom';
+import { Suspense } from 'react';
+import Header from "./components/Header/Header";
+import ContactsPage from './containers/ContactsPage';
 function App() {
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+
+
+<main className="main container">
+    <Router>
+      <Suspense fallback="loading...">
+        <Header/>
+        <Routes>
+        
+        
+          <Route path="/" element={<Navigate to="/contacts" replace/>} ></Route>
+          <Route path='/contacts' element={<ContactsPage/>}/>
+  
+        </Routes>
+      </Suspense>
+  </Router>
+  </main>
   );
 }
 
