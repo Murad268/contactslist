@@ -1,5 +1,5 @@
 import React, {createContext, useContext, useState} from 'react';
-import { deleteContactVery, addContactVery, dontChangeContactVery, changeContactVery, deleteAllContactsVery } from '../utils/utils';
+import { deleteContactVery, addContactVery, dontChangeContactVery, changeContactVery, deleteAllContactsVery, dontDeleteAll } from '../utils/utils';
 import { searchEmp } from '../utils/utils';
 import {useNavigate } from 'react-router-dom';
 const ContactsContext = createContext()
@@ -52,8 +52,13 @@ const setContact = (id, data) => {
   
 }
 const deleteAll = () => {
-   setContactsWithSave([]);
-   deleteAllContactsVery();
+   if(contactsList.length) {
+      setContactsWithSave([]);
+      deleteAllContactsVery();
+   } else {
+      dontDeleteAll();
+   };
+   
 }
 
 
