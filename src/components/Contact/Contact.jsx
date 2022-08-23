@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { useContacts } from '../../contexts/contactsContext';
 import styles from './contact.module.scss';
 import edit from '../../assets/icons/edit-32.ico';
@@ -19,7 +20,7 @@ const Contact = ({contact}) => {
          <div className={styles.contact__controlls}>
             <div className={styles.contact__controlls__info}><img src={info} alt="" /></div>
             <div onClick={() => deleteContact(contact.id)}  className={styles.contact__controlls__edit}><img src={del} alt="" /></div>
-            <div className={styles.contact__controlls__delete}><img src={edit} alt="" /></div>
+            <Link to={`edit/${contact.id}`} className={styles.contact__controlls__delete}><img src={edit} alt="" /></Link>
          </div>
       </div>
    );

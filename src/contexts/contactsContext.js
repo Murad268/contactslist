@@ -11,6 +11,12 @@ export const ContactsContextProvider = ({children}) => {
       setContactsList(newContacts);
       localStorage.setItem('contactsList', JSON.stringify(newContacts))
   };
+  const [position] = useState([
+   {id:1, name: "Frontend developer" },
+   {id:2, name: "Backend developer" },
+   {id:3, name: "Manager" },
+   {id:4, name: "DevOps" }
+])
   const addNewContact = (data) => {
    const newContacts = [...contactsList, data];
    setContactsWithSave(newContacts);
@@ -26,7 +32,8 @@ const deleteContact = (id) => {
    const values = {
       contactsList,
       addNewContact,
-      deleteContact
+      deleteContact,
+      position
    }
    return <ContactsContext.Provider value={values}>{children}</ContactsContext.Provider>
 }

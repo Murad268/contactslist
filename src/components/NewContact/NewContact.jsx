@@ -5,7 +5,7 @@ import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
 const NewContact = () => {
    const navigate = useNavigate();
-   const {addNewContact} = useContacts();
+   const {addNewContact, position} = useContacts();
    const [values, setValues] = useState({
       name: "",
       surname: "",
@@ -16,12 +16,7 @@ const NewContact = () => {
       sex: "male",
       update: false
    })
-   const [position] = useState([
-      {id:1, name: "Frontend developer" },
-      {id:2, name: "Backend developer" },
-      {id:3, name: "Manager" },
-      {id:4, name: "DevOps" }
-   ])
+ 
 
 
    const vanileFunction = () => {
@@ -113,6 +108,7 @@ const NewContact = () => {
            </div>
             <br />
             <div className={styles.newContacts__about}>
+               <h1 className={styles.title}>Добвить новый контакт</h1>
                <h4 className={styles.newContacts__about__title}>Дополнительная иныормация</h4>
                <textarea onChange={setValue} name="info" id="" cols="30" rows="10"></textarea>
             </div>
@@ -121,7 +117,7 @@ const NewContact = () => {
                <span></span>
                <span></span>
                <span></span>
-               Submit
+               Добваить контакт
             </a>
          </form>
          </div>

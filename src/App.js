@@ -4,7 +4,7 @@ import { Suspense } from 'react';
 import 'react-toastify/dist/ReactToastify.css';
 import ContactsPage from './containers/ContactsPage';
 import NewContactPage from './containers/NewContactPage';
-
+import EditPage from './containers/EditPage';
 function App() {
 
   return (
@@ -18,6 +18,7 @@ function App() {
           <Route path="/" element={<Navigate to="/contacts" replace/>} ></Route>
           <Route path='/contacts' element={<ContactsPage/>}/>
           <Route path='/contacts/new' element={<NewContactPage/>}/>
+          <Route path='/contacts/edit/:id' element={<EditPage/>}/>
         </Routes>
       </Suspense>
   </Router>
