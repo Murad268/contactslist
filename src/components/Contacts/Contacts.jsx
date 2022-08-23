@@ -6,6 +6,9 @@ const Contacts = () => {
    const {contactsList} = useContacts();
    return (
       <div className={styles.contacts}>
+
+         
+
          <ul className="">
             {contactsList.map(contact => {
                return <Contact key={contact.id} contact={contact}/>
