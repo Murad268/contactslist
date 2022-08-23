@@ -7,7 +7,8 @@ import email from '../assets/icons/icons8-mail-48.png';
 import pos from '../assets/icons/icons8-new-job-100.png';
 import information from '../assets/icons/icons8-info-48.png';
 import sex from '../assets/icons/sex.png';
-import add from '../assets/icons/icons8-add-64.png'
+import add from '../assets/icons/icons8-add-64.png';
+import exit from '../assets/icons/log-out.png';
 export const icons = {
    edit,
    del,
@@ -17,7 +18,8 @@ export const icons = {
    pos,
    information,
    sex,
-   add
+   add,
+   exit
 }
 
 export const deleteContactVery = () => toast("Контакт удалён");
@@ -37,3 +39,6 @@ export const searchEmp = (items, term) => {
               item.patronymic.toLowerCase().indexOf(term.toLowerCase()) > -1
    })
 }
+
+
+

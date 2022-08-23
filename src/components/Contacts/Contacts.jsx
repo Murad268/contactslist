@@ -8,7 +8,7 @@ const Contacts = () => {
    return (
       <div className={styles.contacts}>
 
-         
+   
 
          <ul className="">
             {contactsList.map(contact => {

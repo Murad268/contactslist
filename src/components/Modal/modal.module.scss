@@ -1,0 +1,87 @@
+.modal {
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   position: fixed;
+   top: 0;
+   left: 0;
+   background: rgba(0, 0, 0, 0.3);
+   visibility: hidden;
+   opacity: 0;
+   transition: all 0.5s;
+   &__active {
+      visibility: visible;
+      opacity: 1;
+   }
+   &__box {
+      overflow: scroll;
+      margin: 0 auto;
+      position: relative;
+      width: 900px;
+      height: max-content;
+      padding: 40px 20px;
+      background: white;
+      box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   }
+   &__close {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 40px;
+      height: 40px;
+      cursor: pointer;
+      img {
+         width: 100%;
+         height: 100%;
+         object-fit: cover;
+      }
+   }
+   &__title {
+      font-size: 20px;
+      font-weight: 800;
+   }
+   &__element {
+      display: flex;
+      align-items: center;
+      font-size: 15px;
+      font-weight: 800;
+      text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+                 0px -5px 35px rgba(255,255,255,0.3);
+      &__infoCONtact {
+         min-width: 400px;
+         padding: 10px;
+         margin-top: 10px;
+         align-items: center; 
+         border-radius: 20px;
+         box-shadow:  6px 6px 12px #2d2f33, 
+                   -6px -6px 12px #35393d;
+         margin-top: 20px;
+         font-size: 12px;
+      }
+      span  {
+         font-weight: 800;
+         font-size: 20px;
+         text-shadow: 0 1px 0 #ccc, 
+         0 2px 0 #c9c9c9,
+         0 3px 0 #bbb,
+         0 4px 0 #b9b9b9,
+         0 5px 0 #aaa,
+         0 6px 1px rgba(0,0,0,.1),
+         0 0 5px rgba(0,0,0,.1),
+         0 1px 3px rgba(0,0,0,.3),
+         0 3px 5px rgba(0,0,0,.2),
+         0 5px 10px rgba(0,0,0,.25),
+         0 10px 10px rgba(0,0,0,.2),
+         0 20px 20px rgba(0,0,0,.15);
+         margin-right: 20px;
+      }
+      img {
+         width: 60px;
+         height: 60px;
+         object-fit: cover;
+         margin-right: 15px;
+      }
+   }
+}

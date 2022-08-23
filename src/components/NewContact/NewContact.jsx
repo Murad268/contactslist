@@ -114,7 +114,7 @@ const NewContact = () => {
                <textarea onChange={setValue} name="info" id="" cols="30" rows="10" required></textarea>
             </div>
             <button></button>
-            <a type='submit' className='btn'  href="#">
+            <a type='submit' className='btn'  href="/#">
                <span></span>
                <span></span>
                <span></span>
