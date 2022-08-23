@@ -1,0 +1,13 @@
+.updateForm {
+   padding: 30px 0 20px 0;
+   width: 600px;
+   margin: 0 auto;
+   &__gender {
+      margin-bottom: 10px;
+   }
+   &__title {
+      font-size: 40px;
+      font-weight: 600;
+      margin-bottom: 30px;
+   }
+}
