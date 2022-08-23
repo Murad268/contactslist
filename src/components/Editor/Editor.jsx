@@ -3,17 +3,22 @@ import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
 import styles from './editor.module.scss';
 const Editor = () => {
-   const {contactsList, position} = useContacts();
+   const {contactsList, position, setContact} = useContacts();
    const {id} = useParams();
    const [editingList, setEditingList] = useState(contactsList.find(item => item.id === id))
    
    const onHandlerChange = (e) => {
        setEditingList(prev => ({...prev, [e.target.name] : e.target.value}))
    }
+   const onSubmit = (e) => {
+      e.preventDefault();
+      setContact(id, editingList);
+   }
+  
    return (
       <div className={styles.updateForm}>
          <h1 className={styles.updateForm__title}>Изменить этот контакт</h1>
-         <form>
+         <form onSubmit={onSubmit}>
             <div className="mb-3">
                <label htmlFor="exampleInputName" className="form-label">Имя</label>
                <input onChange={onHandlerChange} name="name" value={editingList.name} type="text" className="form-control" id="exampleInputName"/>
@@ -32,7 +37,7 @@ const Editor = () => {
             </div>
             <div className={styles.updateForm__gender}>Пол</div>
             <div className="form-check">
-               <input onChange={e => setEditingList(prev => ({...prev, sex: "female"}))} name="sex" defaultChecked={editingList.sex === "male"} className="form-check-input" type="radio" id="flexRadioDefault1"/>
+               <input onChange={e => setEditingList(prev => ({...prev, sex: "male"}))} name="sex" defaultChecked={editingList.sex === "male"} className="form-check-input" type="radio" id="flexRadioDefault1"/>
                <label className="form-check-label" htmlFor="flexRadioDefault1">
                   мужской
                </label>

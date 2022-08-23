@@ -1,11 +1,15 @@
 import React, {createContext, useContext, useState} from 'react';
 import {toast} from 'react-toastify'
+import {useNavigate } from 'react-router-dom';
 const ContactsContext = createContext()
 
 
 export const ContactsContextProvider = ({children}) => {
+   const navigate = useNavigate();
    const deleteContactVery = () => toast("Контакт удалён");
    const addContactVery= () => toast("Контакт добавлен");
+   const dontChangeContactVery= () => toast("Ошибка! Данные не были изменены");
+   const changeContactVery= () => toast("Данные были изменены");
    const [contactsList, setContactsList] = useState(localStorage.getItem('contactsList')? JSON.parse(localStorage.getItem('contactsList')) : []);
    const setContactsWithSave = (newContacts) => {
       setContactsList(newContacts);
@@ -17,6 +21,7 @@ export const ContactsContextProvider = ({children}) => {
    {id:3, name: "Manager" },
    {id:4, name: "DevOps" }
 ])
+const [term, setTerm] = useState("")
   const addNewContact = (data) => {
    const newContacts = [...contactsList, data];
    setContactsWithSave(newContacts);
@@ -28,12 +33,48 @@ const deleteContact = (id) => {
    setContactsWithSave(newContacts);
    deleteContactVery()
 }
+
+const setContact = (id, data) => {
+   let newContacts = contactsList.map(contact => {
+      if(contact.id === id) {
+         contact=data
+      }
+      return contact
+   })
+   if(JSON.stringify(contactsList) === JSON.stringify(newContacts)) {
+      dontChangeContactVery();
+   } else {
+      changeContactVery();
+      setContactsWithSave(newContacts);
+      setTerm("");
+      navigate('../')
+   }
    
+  
+}
+const searchEmp = (items, term) => {
+   if (term.length === 0) {
+       return items;
+   }
+   
+   return items.filter(item => {
+       return item.name.toLowerCase().indexOf(term.toLowerCase()) > -1 || 
+              item.position.toLowerCase().indexOf(term.toLowerCase()) > -1 || 
+              item.surname.toLowerCase().indexOf(term.toLowerCase()) > -1 || 
+              item.patronymic.toLowerCase().indexOf(term.toLowerCase()) > -1
+   })
+}
+
+
    const values = {
-      contactsList,
+      contactsList:searchEmp(contactsList,term),
       addNewContact,
       deleteContact,
-      position
+      position,
+      setContact,
+      setTerm,
+      searchEmp,
+      term
    }
    return <ContactsContext.Provider value={values}>{children}</ContactsContext.Provider>
 }

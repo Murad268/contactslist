@@ -13,7 +13,7 @@ const Contact = ({contact}) => {
             <div className={styles.contact__fullName__left}>
                <span className={styles.contact__name}>{contact.name}</span>
                <span className={styles.contact__surname}>{contact.surname}</span>
-               <span className={styles.contact__patronymic}>{contact.surname}</span>
+               <span className={styles.contact__patronymic}>{contact.patronymic}</span>
             </div>
             <div className={styles.contact__fullName__position}>{contact.position}</div>
          </div>
