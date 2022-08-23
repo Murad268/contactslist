@@ -1,8 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { useContacts } from '../../contexts/contactsContext';
+import { icons } from '../../utils/utils';
 import styles from './header.module.scss'
-import add from '../../assets/icons/icons8-add-64.png';
+
 const Header = () => {
    const {setTerm} = useContacts();
    return (
@@ -12,7 +13,7 @@ const Header = () => {
 			</form>
 
 			
-			<Link to='/contacts/new' className={styles.header__add}><img src={add} alt="" /></Link>
+			<Link to='/contacts/new' className={styles.header__add}><img src={icons.add} alt="" /></Link>
       </div>
    );
 };

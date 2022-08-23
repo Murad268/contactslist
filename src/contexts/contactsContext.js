@@ -53,8 +53,6 @@ const setContact = (id, data) => {
 
 
 
-
-
    const values = {
       contactsList:searchEmp(contactsList,term),
       addNewContact,

@@ -2,8 +2,9 @@ import React, {useState} from 'react';
 import { Link } from 'react-router-dom';
 import { useContacts } from '../../contexts/contactsContext';
 import {Modal } from 'antd';
-import styles from './contact.module.scss';
 import { icons } from '../../utils/utils';
+import styles from './contact.module.scss';
+
 import 'antd/dist/antd.css';
 const Contact = ({contact}) => {
    const {deleteContact} = useContacts();

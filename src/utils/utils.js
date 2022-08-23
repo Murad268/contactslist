@@ -7,6 +7,7 @@ import email from '../assets/icons/icons8-mail-48.png';
 import pos from '../assets/icons/icons8-new-job-100.png';
 import information from '../assets/icons/icons8-info-48.png';
 import sex from '../assets/icons/sex.png';
+import add from '../assets/icons/icons8-add-64.png'
 export const icons = {
    edit,
    del,
@@ -15,7 +16,8 @@ export const icons = {
    email,
    pos,
    information,
-   sex
+   sex,
+   add
 }
 
 export const deleteContactVery = () => toast("Контакт удалён");
