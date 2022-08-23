@@ -5,7 +5,7 @@ import { icons } from '../../utils/utils';
 import styles from './header.module.scss'
 
 const Header = () => {
-   const {setTerm} = useContacts();
+   const {setTerm, deleteAll} = useContacts();
    return (
       <div className={styles.header}>
          <form className="search-bar">
@@ -14,6 +14,7 @@ const Header = () => {
 
 			
 			<Link to='/contacts/new' className={styles.header__add}><img src={icons.add} alt="" /></Link>
+         <div onClick={() => deleteAll()} className={styles.header__delAll}><img src={icons.deleteAll} alt="" /></div>
       </div>
    );
 };

@@ -9,6 +9,7 @@ import information from '../assets/icons/icons8-info-48.png';
 import sex from '../assets/icons/sex.png';
 import add from '../assets/icons/icons8-add-64.png';
 import exit from '../assets/icons/log-out.png';
+import deleteAll from '../assets/icons/icons8-remove-50.png';
 export const icons = {
    edit,
    del,
@@ -19,14 +20,15 @@ export const icons = {
    information,
    sex,
    add,
-   exit
+   exit,
+   deleteAll
 }
 
 export const deleteContactVery = () => toast("Контакт удалён");
 export const addContactVery= () => toast("Контакт добавлен");
 export const dontChangeContactVery= () => toast("Ошибка! Данные не были изменены");
 export const changeContactVery= () => toast("Данные были изменены");
-
+export const deleteAllContactsVery= () => toast("Все контакты удалены");
 
 export const searchEmp = (items, term) => {
    if (term.length === 0) {
