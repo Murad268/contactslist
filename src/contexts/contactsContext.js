@@ -1,15 +1,13 @@
 import React, {createContext, useContext, useState} from 'react';
-import {toast} from 'react-toastify'
+import { deleteContactVery, addContactVery, dontChangeContactVery, changeContactVery } from '../utils/utils';
+import { searchEmp } from '../utils/utils';
 import {useNavigate } from 'react-router-dom';
 const ContactsContext = createContext()
 
 
 export const ContactsContextProvider = ({children}) => {
    const navigate = useNavigate();
-   const deleteContactVery = () => toast("Контакт удалён");
-   const addContactVery= () => toast("Контакт добавлен");
-   const dontChangeContactVery= () => toast("Ошибка! Данные не были изменены");
-   const changeContactVery= () => toast("Данные были изменены");
+
    const [contactsList, setContactsList] = useState(localStorage.getItem('contactsList')? JSON.parse(localStorage.getItem('contactsList')) : []);
    const setContactsWithSave = (newContacts) => {
       setContactsList(newContacts);
@@ -55,18 +53,6 @@ const setContact = (id, data) => {
 
 
 
-const searchEmp = (items, term) => {
-   if (term.length === 0) {
-       return items;
-   }
-   
-   return items.filter(item => {
-       return item.name.toLowerCase().indexOf(term.toLowerCase()) > -1 || 
-              item.position.toLowerCase().indexOf(term.toLowerCase()) > -1 || 
-              item.surname.toLowerCase().indexOf(term.toLowerCase()) > -1 || 
-              item.patronymic.toLowerCase().indexOf(term.toLowerCase()) > -1
-   })
-}
 
 
    const values = {
