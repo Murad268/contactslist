@@ -16,7 +16,7 @@ export const ContactsContextProvider = ({children}) => {
   const [position] = useState([
    {id:1, name: "Frontend developer" },
    {id:2, name: "Backend developer" },
-   {id:3, name: "Manager" },
+   {id:3, name: "QA Manager" },
    {id:4, name: "DevOps" }
 ])
 const [term, setTerm] = useState("")
