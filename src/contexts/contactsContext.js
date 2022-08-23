@@ -42,10 +42,10 @@ const setContact = (id, data) => {
    if(JSON.stringify(contactsList) === JSON.stringify(newContacts)) {
       dontChangeContactVery();
    } else {
+      navigate('../');
       changeContactVery();
       setContactsWithSave(newContacts);
       setTerm("");
-      navigate('../')
    }
    
   
