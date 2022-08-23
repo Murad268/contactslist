@@ -53,6 +53,7 @@ const NewContact = () => {
       setValues(prev => ({...prev, [e.target.name] : e.target.value}))
    }
    const onSubmit = (e) => {
+      e.preventDefault()
       addNewContact({...values, id:uniqid()});
       navigate("../")
    }
@@ -60,8 +61,8 @@ const NewContact = () => {
       <div className={styles.newContacts}>
          <div className={styles.newContacts__login__box}>
          
-         <h2 className={styles.newContacts__title}>Login</h2>
-         <form>
+         <h2 className={styles.newContacts__title}>Добавление контакта</h2>
+         <form onSubmit={onSubmit}>
             <div className={styles.newContacts__user__box}>
                <input onChange={setValue} type="text" value={values.name} name="name" required/>
                <label>Имя</label>
@@ -82,7 +83,7 @@ const NewContact = () => {
             <div className={styles.newContacts__user__radiobox}>
               
                <div className="input__group">
-                  <input onChange={e => setValues(prev => ({...prev, sex: "male"}))} type="radio" id='male' name="sex"  value={values.email} required/> 
+                  <input defaultChecked onChange={e => setValues(prev => ({...prev, sex: "male"}))} type="radio" id='male' name="sex"  value={values.email} required/> 
                   <label htmlFor="male">мужской</label>
                </div>
                <div className="input__group">
@@ -109,10 +110,11 @@ const NewContact = () => {
             <br />
             <div className={styles.newContacts__about}>
                <h1 className={styles.title}>Добвить новый контакт</h1>
-               <h4 className={styles.newContacts__about__title}>Дополнительная иныормация</h4>
-               <textarea onChange={setValue} name="info" id="" cols="30" rows="10"></textarea>
+               <h4 className={styles.newContacts__about__title}>Дополнительная информация</h4>
+               <textarea onChange={setValue} name="info" id="" cols="30" rows="10" required></textarea>
             </div>
-            <a onClick={onSubmit} href="#">
+            <button></button>
+            <a type='submit' className='btn'  href="#">
                <span></span>
                <span></span>
                <span></span>

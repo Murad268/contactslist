@@ -21,19 +21,19 @@ const Editor = () => {
          <form onSubmit={onSubmit}>
             <div className="mb-3">
                <label htmlFor="exampleInputName" className="form-label">Имя</label>
-               <input onChange={onHandlerChange} name="name" value={editingList.name} type="text" className="form-control" id="exampleInputName"/>
+               <input onChange={onHandlerChange} name="name" value={editingList.name} type="text" className="form-control" id="exampleInputName" required/>
             </div>
             <div className="mb-3">
                <label htmlFor="exampleInputSurname" className="form-label">Фамилия</label>
-               <input onChange={onHandlerChange} name="surname" value={editingList.surname} type="text" className="form-control" id="exampleInputSurname"/>
+               <input onChange={onHandlerChange} name="surname" value={editingList.surname} type="text" className="form-control" id="exampleInputSurname" required/>
             </div>
             <div className="mb-3">
                <label htmlFor="exampleInputPatronymic" className="form-label">Отчество</label>
-               <input onChange={onHandlerChange} name="patronymic" value={editingList.patronymic} type="text" className="form-control" id="exampleInputPatronymic"/>
+               <input onChange={onHandlerChange} name="patronymic" value={editingList.patronymic} type="text" className="form-control" id="exampleInputPatronymic" required/>
             </div>
             <div className="mb-3">
                <label htmlFor="exampleInputEmail" className="form-label">Почта</label>
-               <input onChange={onHandlerChange} name="email" value={editingList.email} type="email" className="form-control" id="exampleInputEmail" aria-describedby="emailHelp"/>
+               <input onChange={onHandlerChange} name="email" value={editingList.email} type="email" className="form-control" id="exampleInputEmail" aria-describedby="emailHelp" required/>
             </div>
             <div className={styles.updateForm__gender}>Пол</div>
             <div className="form-check">
@@ -49,13 +49,13 @@ const Editor = () => {
                </label>
             </div>
             <label style={{"marginTop": "10px", "marginBottom": "10px"}} htmlFor="posselect" className="form-label">Должность</label>
-            <select defaultValue={editingList.position} name="postion" onChange={onHandlerChange} id='posselect' className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
+            <select defaultValue={editingList.position} name="position" onChange={onHandlerChange} id='posselect' className="form-select form-select-lg mb-3" aria-label=".form-select-lg example">
                {position.map(pos => {
                   return  <option key={pos.id} value={pos.name}>{pos.name}</option>
                })}
             </select>
             <div className="mb-3">
-               <label htmlFor="exampleInputInfo" className="form-label">Дополнительная иныормация</label>
+               <label htmlFor="exampleInputInfo" className="form-label">Дополнительная информация</label>
                <textarea onChange={onHandlerChange} name="info" value={editingList.info} type="text" className="form-control" id="exampleInputInfo"/>
             </div>
             <div className="mb-3 form-check">

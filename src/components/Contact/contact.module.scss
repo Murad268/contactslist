@@ -5,6 +5,46 @@
    justify-content: space-between;
    align-items: center;
    border-bottom: 3px solid white;
+   &__box {
+      width: 400px;
+      padding: 10px;
+      margin-top: 10px;
+      align-items: center; 
+      border-radius: 20px;
+      box-shadow:  6px 6px 12px #2d2f33, 
+                -6px -6px 12px #35393d;
+      margin-left: 40px;
+   }
+   &__par {
+      font-size: 15px;
+      font-weight: 800;
+      text-shadow: 2px 8px 6px rgba(0,0,0,0.2),
+                 0px -5px 35px rgba(255,255,255,0.3);
+      span {
+         font-weight: 800;
+         font-size: 20px;
+         text-shadow: 0 1px 0 #ccc, 
+         0 2px 0 #c9c9c9,
+         0 3px 0 #bbb,
+         0 4px 0 #b9b9b9,
+         0 5px 0 #aaa,
+         0 6px 1px rgba(0,0,0,.1),
+         0 0 5px rgba(0,0,0,.1),
+         0 1px 3px rgba(0,0,0,.3),
+         0 3px 5px rgba(0,0,0,.2),
+         0 5px 10px rgba(0,0,0,.25),
+         0 10px 10px rgba(0,0,0,.2),
+         0 20px 20px rgba(0,0,0,.15);
+         margin-right: 15px;
+        
+      }
+      img {
+         width: 40px;
+         height: 40px;
+         object-fit: cover;
+         margin-right: 20px;
+      }
+   }
    &__fullName {
       &__left {
          color: #fff;

@@ -4,6 +4,7 @@ import Contact from '../Contact/Contact';
 import styles from './Contacts';
 const Contacts = () => {
    const {contactsList} = useContacts();
+   console.log(contactsList);
    return (
       <div className={styles.contacts}>
 
