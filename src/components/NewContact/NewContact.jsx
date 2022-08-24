@@ -43,62 +43,30 @@ const NewContact = () => {
          <h1>Создать новый контакт</h1>
          <Row>
             <Col md={{span: 12, offset: 6}}>
-               <Form  layout="horizontal" form={form} name="control-hooks" onFinish={onSubmit}   
-               labelCol={{span: 5}}
-               >
-               <Form.Item
-                  name="name"
-                  label={<label>Имя</label>}
-                  rules={rules["name"]}
-                  onChange={e => setValues(prev => ({...prev, name : e.target.value}))}
-               >
+               <Form  layout="horizontal" form={form} name="control-hooks" onFinish={onSubmit} labelCol={{span: 5}}>
+               <Form.Item name="name" label={<label>Имя</label>} rules={rules["name"]} onChange={e => setValues(prev => ({...prev, name : e.target.value}))}>
                   <Input />
                </Form.Item>
-               <Form.Item
-                  name="surname"
-                  label={<label>Фамилия</label>}
-                  onChange={e => setValues(prev => ({...prev, surname : e.target.value}))}
-                  rules={rules["surname"]}
-               >
+               <Form.Item name="surname" label={<label>Фамилия</label>} onChange={e => setValues(prev => ({...prev, surname : e.target.value}))} rules={rules["surname"]}>
                   <Input />
                </Form.Item>
-               <Form.Item
-                  name="patronymic"
-                  label={<label>Отчество</label>}
-                  onChange={e => setValues(prev => ({...prev, patronymic : e.target.value}))}
-                  rules={rules["patronymic"]}
-               >
+               <Form.Item name="patronymic" label={<label>Отчество</label>} onChange={e => setValues(prev => ({...prev, patronymic : e.target.value}))}
+                  rules={rules["patronymic"]}>
                   <Input />
                </Form.Item>
-               <Form.Item
-                  name="email"
-                  label={<label>Почта</label>}
-                  onChange={e => setValues(prev => ({...prev, email : e.target.value}))}
-                  rules={rules["email"]}
-               >
+               <Form.Item name="email" label={<label>Почта</label>} onChange={e => setValues(prev => ({...prev, email : e.target.value}))}
+                  rules={rules["email"]}>
                   <Input />
                </Form.Item>
-               <Form.Item 
-                  label={<label>Пол</label>}
-                  onChange={e => setValues(prev => ({...prev, sex : e.target.value}))}
-                  name="sex"
+               <Form.Item label={<label>Пол</label>} onChange={e => setValues(prev => ({...prev, sex : e.target.value}))} name="sex"
                   rules={rules['sex']}>
                   <Radio.Group>
                      <Radio value="male">мужской</Radio>
                      <Radio value="female">женский</Radio>
                   </Radio.Group>
                </Form.Item>
-               <Form.Item
-                  name="position"
-                  label={<label>Должность</label>}
-               >
-                  <Select
-                     onChange={(value) => {
-                        setValues(prev => ({...prev , position: value}))
-                     }} 
-                     placeholder="Выбери должность контакта" 
-                     allowClear
-                  >
+               <Form.Item name="position" label={<label>Должность</label>}>
+                  <Select onChange={(value) => {setValues(prev => ({...prev , position: value}))}} placeholder="Выбери должность контакта" allowClear>
                   {
                      position.map(pos => {
                         return  <Option key={pos.name} value={pos.name}>{pos.name}</Option>
@@ -106,29 +74,22 @@ const NewContact = () => {
                   }
                   </Select>
                </Form.Item>
-               <Form.Item 
-                  label={<label>Доп Инфо</label>}
-                  name="info"
-                  onChange={e => setValues(prev => ({...prev , info: e.target.value}))}
+               <Form.Item label={<label>Доп Инфо</label>} name="info" onChange={e => setValues(prev => ({...prev , info: e.target.value}))}
                   rules={rules['info']}>
                   <TextArea rows={4} />
                </Form.Item>
                <Form.Item  {...tailLayout} onChange={e => setValues(prev => ({...prev, update: !prev.update}))} label="" name="update" valuePropName={"checked"}>
                   <Checkbox>Получать уведомление об обновлении</Checkbox>
                </Form.Item>
-               
                <Form.Item 
                   {...tailLayout}>
                   <Button type="primary" htmlType="submit">
                      Создать Контакт
                   </Button>
-               
-               
                </Form.Item>
                </Form>
             </Col>
-         </Row>
-         
+         </Row>  
       </div>
     );
 };
