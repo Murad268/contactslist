@@ -1,13 +1,10 @@
 import React, {useState} from 'react';
 import {useNavigate } from 'react-router-dom';
 import { rules, antdImports, tailLayout } from '../../utils/formUtils';
-import styles from './newContact.module.scss';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
+import styles from './newContact.module.scss';
 import 'antd/dist/antd.min.css';
-
-
-
 
 
 const NewContact = () => {
@@ -27,14 +24,7 @@ const NewContact = () => {
       update: false
    })
  
- 
-   const onSubmit = () => {
-      addNewContact({...values}); 
-      navigate("../")
-   }
-
-   
-
+   const onSubmit = () => {addNewContact({...values}); navigate("../")}
   
     return (
       <div className={styles.newContact}>

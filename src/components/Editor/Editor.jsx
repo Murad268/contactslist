@@ -1,12 +1,8 @@
 import React, {useState} from 'react';
-import styles from './editor.module.scss';
-import { rules } from '../../utils/formUtils';
-import { fields, tailLayout, antdImports } from '../../utils/formUtils';
+import { fields, tailLayout, antdImports, rules } from '../../utils/formUtils';
 import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
-
-
-
+import styles from './editor.module.scss';
 const Editor = () => {
    const { Button, Form, Input, Select, Radio, Checkbox, Row, Col, TextArea , Option} = antdImports
    const [form] = Form.useForm();
@@ -14,9 +10,7 @@ const Editor = () => {
    const {id} = useParams();
    const [editingList, setEditingList] = useState(contactsList.find(item => item.id === id))
   
-   const onSubmit = (e) => {
-      setContact(id, editingList);
-   }
+   const onSubmit = () => {setContact(id, editingList)}
  
    return (
       <div className={styles.edit}>
