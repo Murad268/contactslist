@@ -4,11 +4,19 @@ import styles from './modal.module.scss'
 const Modal = ({contact, show, setShow}) => {
    
    const modalClass = show?styles.modal+" " + styles.modal__active:styles.modal
+
+   const exitModal = (e) => {
+      if(!e.target.classList.contains("modal_modal__element__P3uyc") &&
+          !e.target.classList.contains("modal_modal__box__9LdlG") ){
+          setShow(false)
+      } 
+     
+   }
    return (
-      <div className={modalClass}>
+      <div onClick={exitModal} className={modalClass}>
          
          <div className={styles.modal__box}>
-         <div onClick={() => setShow(false)} className={styles.modal__close}><img src={icons.exit} alt="" /></div>
+         <div onClick={exitModal} className={styles.modal__close}><img src={icons.exit} alt="" /></div>
             <h3 className={styles.modal__title}>{`Информация об ${contact.name} ${contact.surname}`}</h3>
             <div className={styles.modal__box__body}>
                <div className={styles.modal__element}>
