@@ -1,3 +1,20 @@
+import { Button, Form, Input, Select, Radio, Checkbox, Row, Col } from 'antd';
+const { TextArea } = Input;
+const { Option } = Select;
+
+export const antdImports = {
+   Button,
+   Form,
+   Input,
+   Select,
+   Radio,
+   Checkbox,
+   Row,
+   Col,
+   TextArea, 
+   Option
+}
+
 export const fields = (state) => {
    return [
       

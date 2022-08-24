@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import styles from './editor.module.scss';
 import { fields, tailLayout } from '../../utils/formUtils';import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
-import { Button, Form, Input, Select, Radio, Checkbox, Row, Col } from 'antd';
-const { TextArea } = Input;
-const { Option } = Select;
+import { antdImports } from '../../utils/formUtils';
+
 
 const Editor = () => {
+   const { Button, Form, Input, Select, Radio, Checkbox, Row, Col, TextArea , Option} = antdImports
    const [form] = Form.useForm();
    const {contactsList, position, setContact} = useContacts();
    const {id} = useParams();
@@ -34,6 +34,7 @@ const Editor = () => {
                      required: true,
                      message:"Вы должны ввести имя контака"
                      },
+                     {pattern: /^[a-zA-Z]+$/, message: 'Имя может содержать только буквы'}
                   ]}
                   onChange={e => setEditingList(prev => ({...prev, name : e.target.value}))}
                >
@@ -48,6 +49,7 @@ const Editor = () => {
                      required: true,
                      message:"Вы должны ввести фамилию контака"
                      },
+                     {pattern: /^[a-zA-Z]+$/, message: 'Фамилия может содержать только буквы'}
                   ]}
                >
                   <Input />
@@ -61,6 +63,7 @@ const Editor = () => {
                      required: true,
                      message:"Вы должны ввести отчество контака"
                      },
+                     {pattern: /^[a-zA-Z]+$/, message: 'Отчество может содержать только буквы'}
                   ]}
                >
                   <Input />

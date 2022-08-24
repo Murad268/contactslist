@@ -4,15 +4,15 @@ import styles from './newContact.module.scss';
 import { tailLayout } from '../../utils/formUtils';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
+import { antdImports } from '../../utils/formUtils';
 import 'antd/dist/antd.css';
-import { Button, Form, Input, Select, Radio, Checkbox, Row, Col } from 'antd';
-const { TextArea } = Input;
-const { Option } = Select;
+
 
 
 
 
 const NewContact = () => {
+   const { Button, Form, Input, Select, Radio, Checkbox, Row, Col, TextArea , Option} = antdImports
    const [form] = Form.useForm();
    const navigate = useNavigate();
    const {addNewContact, position} = useContacts();
@@ -28,11 +28,6 @@ const NewContact = () => {
    })
  
  
-
- 
-
-
- 
    const onSubmit = (e) => {
       addNewContact({...values, id:uniqid()}); 
       navigate("../")
@@ -40,8 +35,6 @@ const NewContact = () => {
 
    
 
-   
- 
   
     return (
       <div className={styles.newContact}>
