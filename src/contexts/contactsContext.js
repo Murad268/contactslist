@@ -1,13 +1,13 @@
-import React, {createContext, useContext, useState} from 'react';
+import React, {createContext, useContext, useState, useEffect} from 'react';
 import { deleteContactVery, addContactVery, dontChangeContactVery, changeContactVery, deleteAllContactsVery, dontDeleteAll } from '../utils/utils';
 import { searchEmp } from '../utils/utils';
-import {useNavigate } from 'react-router-dom';
+import {useNavigate, useLocation } from 'react-router-dom';
 const ContactsContext = createContext()
 
 
 export const ContactsContextProvider = ({children}) => {
    const navigate = useNavigate();
-
+   const {pathname} = useLocation();
    const [contactsList, setContactsList] = useState(localStorage.getItem('contactsList')? JSON.parse(localStorage.getItem('contactsList')) : []);
    const setContactsWithSave = (newContacts) => {
       setContactsList(newContacts);
@@ -23,13 +23,15 @@ const [term, setTerm] = useState("")
   const addNewContact = (data) => {
    const newContacts = [...contactsList, data];
    setContactsWithSave(newContacts);
-   addContactVery()
+   addContactVery();
+   setTerm("");
 } 
 
 const deleteContact = (id) => {
    const newContacts = contactsList.filter(item => item.id !== id);
    setContactsWithSave(newContacts);
-   deleteContactVery()
+   deleteContactVery();
+   setTerm("");
 }
 
 const setContact = (id, data) => {
@@ -48,10 +50,12 @@ const setContact = (id, data) => {
       setContactsWithSave(newContacts);
       setTerm("");
    }
-   
-  
 }
 
+   useEffect(() => {
+      setTerm("");
+   }, [pathname]) 
+  
 
 const deleteAll = () => {
    if(contactsList.length) {

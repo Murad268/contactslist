@@ -11,7 +11,9 @@ const Editor = () => {
    const [editingList, setEditingList] = useState(contactsList.find(item => item.id === id))
   
    const onSubmit = () => {setContact(id, editingList)}
- 
+   window.onhashchange = function() {
+      
+     }
    return (
       <div className={styles.edit}>
          <h1>Изменить контакт</h1>
