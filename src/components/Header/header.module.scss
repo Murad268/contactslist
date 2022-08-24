@@ -28,11 +28,11 @@
    &__delAll {
       width: 60px;
       height: 60px;
-      cursor: pointer;
       img {
          width: 100%;
          height: 100%;
          object-fit: cover;
+         cursor: pointer;
       }
    }
 }

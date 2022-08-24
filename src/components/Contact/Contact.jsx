@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { Modal } from 'antd';
+import { Modal, Popconfirm } from 'antd';
 import { Link } from 'react-router-dom';
 import { useContacts } from '../../contexts/contactsContext';
 import { icons } from '../../utils/utils';
@@ -8,7 +8,11 @@ import 'antd/dist/antd.min.css';
 const Contact = ({contact}) => {
    const {deleteContact} = useContacts();
    const [isModalVisible, setIsModalVisible] = useState(false);
+   const text = 'Вы уверены, что хотите удалить этот контакт?';
 
+   const confirm = () => {
+      deleteContact(contact.id)
+   };
    const showModal = () => {
      setIsModalVisible(true);
    };
@@ -58,7 +62,10 @@ const Contact = ({contact}) => {
             </div>
             <div className={styles.contact__controlls}>
                <div onClick={showModal} className={styles.contact__controlls__info}><img src={icons.info} alt="" /></div>
-               <div onClick={() => deleteContact(contact.id)}  className={styles.contact__controlls__edit}><img src={icons.del} alt="" /></div>
+               <Popconfirm placement="topLeft" title={text} onConfirm={confirm} okText="Yes" cancelText="No">
+                  <div className={styles.contact__controlls__edit}><img src={icons.del} alt="" /></div>
+               </Popconfirm>
+               
                <Link to={`edit/${contact.id}`} className={styles.contact__controlls__delete}><img src={icons.edit} alt="" /></Link>
             </div>
          </div>
@@ -67,3 +74,4 @@ const Contact = ({contact}) => {
 };
 
 export default Contact;
+
