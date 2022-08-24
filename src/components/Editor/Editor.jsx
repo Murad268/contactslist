@@ -48,10 +48,8 @@ const Editor = () => {
                      <Radio value="female">женский</Radio>
                   </Radio.Group>
                </Form.Item>
-               <Form.Item name="position" label={<label>Должность</label>}
-                  rules={rules["position"]}>
-                  <Select onChange={(value) => {setEditingList(prev => ({...prev , position: value}))}}placeholder="Выбери должность контакта" allowClear
-                  >
+               <Form.Item name="position" label={<label>Должность</label>} rules={rules["position"]}>
+                  <Select onChange={(value) => {setEditingList(prev => ({...prev , position: value}))}} placeholder="Выбери должность контакта" allowClear>
                   {
                      position.map(pos => {
                         return  <Option key={pos.name} value={pos.name}>{pos.name}</Option>
