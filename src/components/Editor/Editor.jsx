@@ -14,7 +14,7 @@ const Editor = () => {
  
    return (
       <div className={styles.edit}>
-         <h1>Изменит контакт</h1>
+         <h1>Изменить контакт</h1>
          <Row>
             <Col md={{span: 12, offset: 6}}>
                <Form  layout="horizontal" form={form} name="control-hooks" onFinish={onSubmit}  labelCol={{span: 5}}
@@ -61,7 +61,7 @@ const Editor = () => {
                <Form.Item 
                   {...tailLayout}>
                   <Button type="primary" htmlType="submit">
-                     Изменит Контакт
+                     Изменить Контакт
                   </Button>
                </Form.Item>
                </Form>
