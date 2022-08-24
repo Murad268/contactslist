@@ -51,9 +51,10 @@ const NewContact = () => {
                   rules={[
                      {
                      required: true,
-                     message:"Вы должны ввести имя контака"
+                     message:"Вы должны ввести имя контакта"
                      },
-                     {pattern: /^[a-zA-Z]+$/, message: 'Имя может содержать только буквы'}
+                     {pattern: /^[a-zA-Z]+$/, message: 'Имя может содержать только буквы'},
+                     {min: 3,  message: 'имя должно быть не менее 3 символов'}
                      
                   ]}
                   onChange={e => setValues(prev => ({...prev, name : e.target.value}))}
@@ -67,9 +68,10 @@ const NewContact = () => {
                   rules={[
                      {
                      required: true,
-                     message:"Вы должны ввести фамилию контака"
+                     message:"Вы должны ввести фамилию контакта"
                      },
-                     {pattern: /^[a-zA-Z]+$/, message: 'Фамилия может содержать только буквы'}
+                     {pattern: /^[a-zA-Z]+$/, message: 'Фамилия может содержать только буквы'},
+                     {min: 3,  message: 'Фамилия должно быть не менее 3 символов'}
                   ]}
                >
                   <Input />
@@ -81,9 +83,10 @@ const NewContact = () => {
                   rules={[
                      {
                      required: true,
-                     message:"Вы должны ввести отчество контака"
+                     message:"Вы должны ввести отчество контакта"
                      },
-                     {pattern: /^[a-zA-Z]+$/, message: 'Отчество может содержать только буквы'}
+                     {pattern: /^[a-zA-Z]+$/, message: 'Отчество может содержать только буквы'},
+                     {min: 3,  message: 'Отчество должно быть не менее 3 символов'}
                   ]}
                >
                   <Input />
@@ -151,6 +154,7 @@ const NewContact = () => {
                      required: true,
                      message: 'Вы должны ввесты доп инвормацию о контакте',
                      },
+                     {min: 10,  message: 'доп инвормация должна состоять не менее 10 символов'}
                   ]}>
                   <TextArea rows={4} />
                </Form.Item>
