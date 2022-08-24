@@ -3,7 +3,16 @@ import {useNavigate } from 'react-router-dom';
 import styles from './newContact.module.scss';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
+import 'antd/dist/antd.css';
+import { Button, Form, Input, Select, Radio, Checkbox, Row, Col } from 'antd';
+const { TextArea } = Input;
+const { Option } = Select;
+
+
+
+
 const NewContact = () => {
+   const [form] = Form.useForm();
    const navigate = useNavigate();
    const {addNewContact, position} = useContacts();
    const [values, setValues] = useState({
@@ -12,119 +21,163 @@ const NewContact = () => {
       patronymic: "",
       email: "",
       info: "",
-      position: "Frontend developer",
+      position: "",
       sex: "male",
       update: false
    })
  
+   const tailLayout = {
+      wrapperCol: {
+        offset: 5,
+        span: 16,
+      },
+    };
+
+ 
 
 
-   const vanileFunction = () => {
-      document.querySelectorAll("input").forEach((input, i) => {
-         input.addEventListener("input", () => {
-            if(values.name !=="") {
-               document.querySelectorAll("label")[0].style.display="none"
-            } else {
-               document.querySelectorAll("label")[0].style.display="block"
-            }
-            if(values.surname !=="") {
-               document.querySelectorAll("label")[1].style.display="none"
-            } else {
-               document.querySelectorAll("label")[1].style.display="block"
-            }
-            if(values.patronymic !=="") {
-               document.querySelectorAll("label")[2].style.display="none"
-            } else {
-               document.querySelectorAll("label")[2].style.display="block"
-            }
-            if(values.email !=="") {
-               document.querySelectorAll("label")[3].style.display="none"
-            } else {
-               document.querySelectorAll("label")[3].style.display="block"
-            }
-         })
-      })
-   }
-
-   vanileFunction()
-
-
-   const setValue = (e) => {
-      setValues(prev => ({...prev, [e.target.name] : e.target.value}))
-   }
+ 
    const onSubmit = (e) => {
-      e.preventDefault()
-      addNewContact({...values, id:uniqid()});
+      addNewContact({...values, id:uniqid()}); 
       navigate("../")
    }
-   return (
-      <div className={styles.newContacts}>
-         <div className={styles.newContacts__login__box}>
+
+   
+
+   
+ 
+  
+    return (
+      <div className={styles.newContact}>
+         <h1>Создать новый контакт</h1>
+         <Row>
+            <Col md={{span: 12, offset: 6}}>
+               <Form  layout="horizontal" form={form} name="control-hooks" onFinish={onSubmit}   
+               labelCol={{span: 5}}
+               >
+               <Form.Item
+                  name="name"
+                  label={<label>Имя</label>}
+                  rules={[
+                     {
+                     required: true,
+                     message:"Вы должны ввести имя контака"
+                     },
+                  ]}
+                  onChange={e => setValues(prev => ({...prev, name : e.target.value}))}
+               >
+                  <Input />
+               </Form.Item>
+               <Form.Item
+                  name="surname"
+                  label={<label>Фамилия</label>}
+                  onChange={e => setValues(prev => ({...prev, surname : e.target.value}))}
+                  rules={[
+                     {
+                     required: true,
+                     message:"Вы должны ввести фамилию контака"
+                     },
+                  ]}
+               >
+                  <Input />
+               </Form.Item>
+               <Form.Item
+                  name="patronymic"
+                  label={<label>Отчество</label>}
+                  onChange={e => setValues(prev => ({...prev, patronymic : e.target.value}))}
+                  rules={[
+                     {
+                     required: true,
+                     message:"Вы должны ввести отчество контака"
+                     },
+                  ]}
+               >
+                  <Input />
+               </Form.Item>
+               <Form.Item
+                  name="email"
+                  label={<label>Почта</label>}
+                  onChange={e => setValues(prev => ({...prev, email : e.target.value}))}
+                  rules={[
+                     {
+                     required: true,
+                     type: "email",
+                     message: 'Вы ввели почту в неправильном формате',
+                     },
+                  ]}
+               >
+                  <Input />
+               </Form.Item>
+               <Form.Item 
+                  label={<label>Пол</label>}
+                  onChange={e => setValues(prev => ({...prev, sex : e.target.value}))}
+                  name="sex"
+                  rules={[
+                     {
+                     required: true,
+                     message: 'Вы должны ввесты пол контакта',
+                     },
+                  ]}>
+                  <Radio.Group>
+                     <Radio value="male">мужской</Radio>
+                     <Radio value="female">женский</Radio>
+                  </Radio.Group>
+               </Form.Item>
+               <Form.Item
+                  name="position"
+                  label={<label>Должность</label>}
+                  
+                  rules={[
+                     {
+                     required: true,
+                     message: 'Вы должны ввесты должность контакта',
+                     },
+                  ]}
+               >
+                  <Select
+                     onChange={(value) => {
+                        setValues(prev => ({...prev , position: value}))
+                     }} 
+                     placeholder="Выбери должность контакта" 
+                     allowClear
+                  >
+                  {
+                     position.map(pos => {
+                        return  <Option key={pos.name} value={pos.name}>{pos.name}</Option>
+                     })
+                  }
+                  </Select>
+               </Form.Item>
+               <Form.Item 
+                  label={<label>Доп Инфо</label>}
+                  name="info"
+                  onChange={e => setValues(prev => ({...prev , info: e.target.value}))}
+                  rules={[
+                     {
+                     required: true,
+                     message: 'Вы должны ввесты доп инвормацию о контакте',
+                     },
+                  ]}>
+                  <TextArea rows={4} />
+               </Form.Item>
+               <Form.Item  {...tailLayout} onChange={e => setValues(prev => ({...prev, update: !prev.update}))} label="" name="update" valuePropName={"checked"}>
+                  <Checkbox>Получать уведомление об обновлении</Checkbox>
+               </Form.Item>
+               
+               <Form.Item 
+                  {...tailLayout}>
+                  <Button type="primary" htmlType="submit">
+                     Создать Контакт
+                  </Button>
+               
+               
+               </Form.Item>
+               </Form>
+            </Col>
+         </Row>
          
-         <h2 className={styles.newContacts__title}>Добавление контакта</h2>
-         <form onSubmit={onSubmit}>
-            <div className={styles.newContacts__user__box}>
-               <input onChange={setValue} type="text" value={values.name} name="name" required/>
-               <label>Имя</label>
-            </div>
-            <div className={styles.newContacts__user__box}>
-               <input onChange={setValue} type="text"  value={values.surname} name="surname" required/>
-               <label>Фамилия</label>
-            </div>
-            <div className={styles.newContacts__user__box}>
-               <input onChange={setValue} type="text"  value={values.patronymic} name="patronymic" required/>
-               <label>Отчество</label>
-            </div>
-            <div className={styles.newContacts__user__box}>
-               <input onChange={setValue} type="email"  value={values.email} name="email" required/>
-               <label>Почта</label>
-            </div>
-            <h4>Пол</h4>
-            <div className={styles.newContacts__user__radiobox}>
-              
-               <div className="input__group">
-                  <input defaultChecked onChange={e => setValues(prev => ({...prev, sex: "male"}))} type="radio" id='male' name="sex"  value={values.email} required/> 
-                  <label htmlFor="male">мужской</label>
-               </div>
-               <div className="input__group">
-                  <input onChange={e => setValues(prev => ({...prev, sex: "female"}))} type="radio" id='female' name="sex" value={values.email}  required/> 
-                  <label htmlFor="female">женский</label>
-               </div>
-            </div>
-            <h4 style={{"marginTop": "15px"}}>Должность</h4>
-            <select onChange={setValue} name="position" id="">
-               {
-                  position.map(pos => {
-                     return <option key={pos.id} value={pos.name}>{pos.name}</option>
-                  })
-               }
-            </select>
-            <div className="hr"></div>
-            <div className={styles.newContacts__user__radiobox}>
-              
-              <div className="input__group">
-                 <input  onChange={e => setValues(prev => ({...prev, update: !prev.update}))} type="checkbox" id='male'  value={values.email} name="update" /> 
-                 <label htmlFor="update">сообщать об обновелии</label>
-              </div>
-           </div>
-            <br />
-            <div className={styles.newContacts__about}>
-               <h1 className={styles.title}>Добвить новый контакт</h1>
-               <h4 className={styles.newContacts__about__title}>Дополнительная информация</h4>
-               <textarea onChange={setValue} name="info" id="" cols="30" rows="10" required></textarea>
-            </div>
-            <button></button>
-            <a type='submit' className='btn'  href="/#">
-               <span></span>
-               <span></span>
-               <span></span>
-               <span></span>
-               Добваить контакт
-            </a>
-         </form>
-         </div>
       </div>
-   );
+    );
 };
 
 export default NewContact;

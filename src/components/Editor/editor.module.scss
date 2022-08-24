@@ -1,13 +1,16 @@
-.updateForm {
-   padding: 30px 0 20px 0;
-   width: 600px;
-   margin: 0 auto;
-   &__gender {
-      margin-bottom: 10px;
+.edit {
+   padding: 30px 0 0 0;
+   margin-top: 10px;
+   box-shadow: rgba(0, 0, 0, 0.25) 0px 54px 55px, rgba(0, 0, 0, 0.12) 0px -12px 30px, rgba(0, 0, 0, 0.12) 0px 4px 6px, rgba(0, 0, 0, 0.17) 0px 12px 13px, rgba(0, 0, 0, 0.09) 0px -3px 5px;
+   h1 {
+     font-size: 30px;
+     font-weight: 800;
+     margin-bottom: 30px;
+     text-align: center;
+     color: #7cb305;
    }
-   &__title {
-      font-size: 40px;
-      font-weight: 600;
-      margin-bottom: 30px;
+   label {
+     font-weight: 600;
+     font-size: 18px;
    }
 }
