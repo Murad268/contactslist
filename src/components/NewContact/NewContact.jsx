@@ -5,7 +5,7 @@ import { tailLayout } from '../../utils/formUtils';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
 import { antdImports } from '../../utils/formUtils';
-import 'antd/dist/antd.css';
+import 'antd/dist/antd.min.css';
 
 
 
@@ -17,6 +17,7 @@ const NewContact = () => {
    const navigate = useNavigate();
    const {addNewContact, position} = useContacts();
    const [values, setValues] = useState({
+      id: uniqid(),
       name: "",
       surname: "",
       patronymic: "",
@@ -28,8 +29,8 @@ const NewContact = () => {
    })
  
  
-   const onSubmit = (e) => {
-      addNewContact({...values, id:uniqid()}); 
+   const onSubmit = () => {
+      addNewContact({...values}); 
       navigate("../")
    }
 

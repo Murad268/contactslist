@@ -51,6 +51,8 @@ const setContact = (id, data) => {
    
   
 }
+
+
 const deleteAll = () => {
    if(contactsList.length) {
       setContactsWithSave([]);

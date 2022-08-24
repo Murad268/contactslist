@@ -1,11 +1,10 @@
 import React, {useState} from 'react';
 import { Modal } from 'antd';
-import 'antd/dist/antd.css';
 import { Link } from 'react-router-dom';
 import { useContacts } from '../../contexts/contactsContext';
 import { icons } from '../../utils/utils';
 import styles from './contact.module.scss';
-
+import 'antd/dist/antd.min.css';
 const Contact = ({contact}) => {
    const {deleteContact} = useContacts();
    const [isModalVisible, setIsModalVisible] = useState(false);
