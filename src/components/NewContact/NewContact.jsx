@@ -1,11 +1,9 @@
 import React, {useState} from 'react';
 import {useNavigate } from 'react-router-dom';
-import { rules } from '../../utils/formUtils';
+import { rules, antdImports, tailLayout } from '../../utils/formUtils';
 import styles from './newContact.module.scss';
-import { tailLayout } from '../../utils/formUtils';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
-import { antdImports } from '../../utils/formUtils';
 import 'antd/dist/antd.min.css';
 
 

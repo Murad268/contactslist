@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import styles from './editor.module.scss';
 import { rules } from '../../utils/formUtils';
-import { fields, tailLayout } from '../../utils/formUtils';import { useContacts } from '../../contexts/contactsContext';
+import { fields, tailLayout, antdImports } from '../../utils/formUtils';
+import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
-import { antdImports } from '../../utils/formUtils';
+
 
 
 const Editor = () => {
