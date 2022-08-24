@@ -63,6 +63,8 @@ const NewContact = () => {
                      required: true,
                      message:"Вы должны ввести имя контака"
                      },
+                     {pattern: /^[a-zA-Z]+$/, message: 'Имя может содержать только буквы'}
+                     
                   ]}
                   onChange={e => setValues(prev => ({...prev, name : e.target.value}))}
                >
@@ -77,6 +79,7 @@ const NewContact = () => {
                      required: true,
                      message:"Вы должны ввести фамилию контака"
                      },
+                     {pattern: /^[a-zA-Z]+$/, message: 'Фамилия может содержать только буквы'}
                   ]}
                >
                   <Input />
@@ -90,6 +93,7 @@ const NewContact = () => {
                      required: true,
                      message:"Вы должны ввести отчество контака"
                      },
+                     {pattern: /^[a-zA-Z]+$/, message: 'Отчество может содержать только буквы'}
                   ]}
                >
                   <Input />

@@ -25,7 +25,7 @@ const [term, setTerm] = useState("")
    setContactsWithSave(newContacts);
    addContactVery()
 } 
-console.log(contactsList)
+
 const deleteContact = (id) => {
    const newContacts = contactsList.filter(item => item.id !== id);
    setContactsWithSave(newContacts);

@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styles from './editor.module.scss';
+import { fields } from '../../utils/field';
 import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
 import { Button, Form, Input, Select, Radio, Checkbox, Row, Col } from 'antd';
@@ -29,40 +30,7 @@ const Editor = () => {
             <Col md={{span: 12, offset: 6}}>
                <Form  layout="horizontal" form={form} name="control-hooks" onFinish={onSubmit}   
                labelCol={{span: 5}}
-               fields={[
-                  {
-                    name: ["name"],
-                    value: editingList.name
-                  },
-                  {
-                     name: ["surname"],
-                     value: editingList.surname
-                  },
-                  {
-                     name: ["patronymic"],
-                     value: editingList.patronymic
-                  },
-                  {
-                     name: ["email"],
-                     value: editingList.email
-                  },
-                  {
-                     name: ["position"],
-                     value: editingList.position
-                  },
-                  {
-                     name: ["sex"],
-                     value: editingList.sex
-                  },
-                  {
-                     name: ["update"],
-                     value: editingList.update
-                  },
-                  {
-                     name: ["info"],
-                     value: editingList.info
-                  },
-                ]}
+               fields={fields(editingList)}
                >
                <Form.Item
                   name="name"
