@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {useNavigate } from 'react-router-dom';
 import styles from './newContact.module.scss';
+import { tailLayout } from '../../utils/formUtils';
 import { useContacts } from '../../contexts/contactsContext';
 import uniqid from 'uniqid';
 import 'antd/dist/antd.css';
@@ -26,12 +27,7 @@ const NewContact = () => {
       update: false
    })
  
-   const tailLayout = {
-      wrapperCol: {
-        offset: 5,
-        span: 16,
-      },
-    };
+ 
 
  
 

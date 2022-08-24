@@ -36,3 +36,11 @@ export const fields = (state) => {
        
    ]
 }
+
+
+export const tailLayout = {
+   wrapperCol: {
+     offset: 5,
+     span: 16,
+   },
+ };

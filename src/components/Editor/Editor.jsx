@@ -1,7 +1,6 @@
 import React, {useState} from 'react';
 import styles from './editor.module.scss';
-import { fields } from '../../utils/field';
-import { useContacts } from '../../contexts/contactsContext';
+import { fields, tailLayout } from '../../utils/formUtils';import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
 import { Button, Form, Input, Select, Radio, Checkbox, Row, Col } from 'antd';
 const { TextArea } = Input;
@@ -17,12 +16,7 @@ const Editor = () => {
    const onSubmit = (e) => {
       setContact(id, editingList);
    }
-   const tailLayout = {
-      wrapperCol: {
-        offset: 5,
-        span: 16,
-      },
-    };
+ 
    return (
       <div className={styles.edit}>
          <h1>Изменит контакт</h1>
