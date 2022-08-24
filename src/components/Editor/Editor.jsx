@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styles from './editor.module.scss';
+import { rules } from '../../utils/formUtils';
 import { fields, tailLayout } from '../../utils/formUtils';import { useContacts } from '../../contexts/contactsContext';
 import { useParams } from 'react-router-dom';
 import { antdImports } from '../../utils/formUtils';
@@ -28,14 +29,7 @@ const Editor = () => {
                <Form.Item
                   name="name"
                   label={<label>Имя</label>}
-                  rules={[
-                     {
-                     required: true,
-                     message:"Вы должны ввести имя контакта"
-                     },
-                     {pattern: /^[a-zA-ZƏəğİiÜüŞşçÇ]+$/, message: 'Имя может содержать только буквы'},
-                     {min: 3,  message: 'имя должно быть не менее 3 символов'}
-                  ]}
+                  rules={rules["name"]}
                   onChange={e => setEditingList(prev => ({...prev, name : e.target.value}))}
                >
                   <Input />
@@ -44,14 +38,7 @@ const Editor = () => {
                   name="surname"
                   label={<label>Фамилия</label>}
                   onChange={e => setEditingList(prev => ({...prev, surname : e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     message:"Вы должны ввести фамилию контакта"
-                     },
-                     {pattern: /^[a-zA-ZƏəğİiÜüŞşçÇ]+$/, message: 'Фамилия может содержать только буквы'},
-                     {min: 3,  message: 'Фамилия должно быть не менее 3 символов'}
-                  ]}
+                  rules={rules["surname"]}
                >
                   <Input />
                </Form.Item>
@@ -59,14 +46,7 @@ const Editor = () => {
                   name="patronymic"
                   label={<label>Отчество</label>}
                   onChange={e => setEditingList(prev => ({...prev, patronymic : e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     message:"Вы должны ввести отчество контакта"
-                     },
-                     {pattern: /^[a-zA-ZƏəğİiÜüŞşçÇ]+$/, message: 'Отчество может содержать только буквы'},
-                     {min: 3,  message: 'Отчество должно быть не менее 3 символов'}
-                  ]}
+                  rules={rules["patronymic"]}
                >
                   <Input />
                </Form.Item>
@@ -74,13 +54,7 @@ const Editor = () => {
                   name="email"
                   label={<label>Почта</label>}
                   onChange={e => setEditingList(prev => ({...prev, email : e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     type: "email",
-                     message: 'Вы ввели почту в неправильном формате',
-                     },
-                  ]}
+                  rules={rules["email"]}
                >
                   <Input />
                </Form.Item>
@@ -88,12 +62,7 @@ const Editor = () => {
                   label={<label>Пол</label>}
                   onChange={e => setEditingList(prev => ({...prev, sex : e.target.value}))}
                   name="sex"
-                  rules={[
-                     {
-                     required: true,
-                     message: 'Вы должны ввесты пол контакта',
-                     },
-                  ]}>
+                  rules={rules["sex"]}>
                   <Radio.Group>
                      <Radio value="male">мужской</Radio>
                      <Radio value="female">женский</Radio>
@@ -102,13 +71,7 @@ const Editor = () => {
                <Form.Item
                   name="position"
                   label={<label>Должность</label>}
-                  
-                  rules={[
-                     {
-                     required: true,
-                     message: 'Вы должны ввесты должность контакта',
-                     },
-                  ]}
+                  rules={rules["position"]}
                >
                   <Select
                      onChange={(value) => {
@@ -128,13 +91,7 @@ const Editor = () => {
                   label={<label>Доп Инфо</label>}
                   name="info"
                   onChange={e => setEditingList(prev => ({...prev , info: e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     message: 'Вы должны ввесты доп инвормацию о контакте',
-                     },
-                     {min: 10,  message: 'доп инвормация должна состоять не менее 10 символов'}
-                  ]}>
+                  rules={rules["info"]}>
                   <TextArea rows={4} />
                </Form.Item>
                <Form.Item  {...tailLayout} onChange={e => setEditingList(prev => ({...prev, update: !prev.update}))} label="" name="update" valuePropName={"checked"}>
@@ -146,8 +103,6 @@ const Editor = () => {
                   <Button type="primary" htmlType="submit">
                      Изменит Контакт
                   </Button>
-               
-               
                </Form.Item>
                </Form>
             </Col>

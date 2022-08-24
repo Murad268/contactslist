@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import {useNavigate } from 'react-router-dom';
+import { rules } from '../../utils/formUtils';
 import styles from './newContact.module.scss';
 import { tailLayout } from '../../utils/formUtils';
 import { useContacts } from '../../contexts/contactsContext';
@@ -48,15 +49,7 @@ const NewContact = () => {
                <Form.Item
                   name="name"
                   label={<label>Имя</label>}
-                  rules={[
-                     {
-                     required: true,
-                     message:"Вы должны ввести имя контакта"
-                     },
-                     {pattern:  /^[a-zA-ZƏəğİiÜüŞşçÇ]+$/, message: 'Имя может содержать только буквы'},
-                     {min: 3,  message: 'имя должно быть не менее 3 символов'}
-                     
-                  ]}
+                  rules={rules["name"]}
                   onChange={e => setValues(prev => ({...prev, name : e.target.value}))}
                >
                   <Input />
@@ -65,14 +58,7 @@ const NewContact = () => {
                   name="surname"
                   label={<label>Фамилия</label>}
                   onChange={e => setValues(prev => ({...prev, surname : e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     message:"Вы должны ввести фамилию контакта"
-                     },
-                     {pattern:  /^[a-zA-ZƏəğİiÜüŞşçÇ]+$/, message: 'Фамилия может содержать только буквы'},
-                     {min: 3,  message: 'Фамилия должно быть не менее 3 символов'}
-                  ]}
+                  rules={rules["surname"]}
                >
                   <Input />
                </Form.Item>
@@ -80,14 +66,7 @@ const NewContact = () => {
                   name="patronymic"
                   label={<label>Отчество</label>}
                   onChange={e => setValues(prev => ({...prev, patronymic : e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     message:"Вы должны ввести отчество контакта"
-                     },
-                     {pattern:  /^[a-zA-ZƏəğİiÜüŞşçÇ]+$/, message: 'Отчество может содержать только буквы'},
-                     {min: 3,  message: 'Отчество должно быть не менее 3 символов'}
-                  ]}
+                  rules={rules["patronymic"]}
                >
                   <Input />
                </Form.Item>
@@ -95,13 +74,7 @@ const NewContact = () => {
                   name="email"
                   label={<label>Почта</label>}
                   onChange={e => setValues(prev => ({...prev, email : e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     type: "email",
-                     message: 'Вы ввели почту в неправильном формате',
-                     },
-                  ]}
+                  rules={rules["email"]}
                >
                   <Input />
                </Form.Item>
@@ -109,12 +82,7 @@ const NewContact = () => {
                   label={<label>Пол</label>}
                   onChange={e => setValues(prev => ({...prev, sex : e.target.value}))}
                   name="sex"
-                  rules={[
-                     {
-                     required: true,
-                     message: 'Вы должны ввесты пол контакта',
-                     },
-                  ]}>
+                  rules={rules['sex']}>
                   <Radio.Group>
                      <Radio value="male">мужской</Radio>
                      <Radio value="female">женский</Radio>
@@ -123,13 +91,6 @@ const NewContact = () => {
                <Form.Item
                   name="position"
                   label={<label>Должность</label>}
-                  
-                  rules={[
-                     {
-                     required: true,
-                     message: 'Вы должны ввесты должность контакта',
-                     },
-                  ]}
                >
                   <Select
                      onChange={(value) => {
@@ -149,13 +110,7 @@ const NewContact = () => {
                   label={<label>Доп Инфо</label>}
                   name="info"
                   onChange={e => setValues(prev => ({...prev , info: e.target.value}))}
-                  rules={[
-                     {
-                     required: true,
-                     message: 'Вы должны ввесты доп инвормацию о контакте',
-                     },
-                     {min: 10,  message: 'доп инвормация должна состоять не менее 10 символов'}
-                  ]}>
+                  rules={rules['info']}>
                   <TextArea rows={4} />
                </Form.Item>
                <Form.Item  {...tailLayout} onChange={e => setValues(prev => ({...prev, update: !prev.update}))} label="" name="update" valuePropName={"checked"}>
